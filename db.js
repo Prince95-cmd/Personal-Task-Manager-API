@@ -5,10 +5,7 @@ env.config();
 
 const mongoURL = process.env.MONGODB_CONNECTION_URL;
 function connectToMongoDB(){
-    mongoose.connect(mongoURL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
+    mongoose.connect(mongoURL);
 
     mongoose.connection.on('connected', () => {
         console.log('Connected to MongoDB successfully');
