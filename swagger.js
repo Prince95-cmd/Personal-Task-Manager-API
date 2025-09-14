@@ -31,7 +31,7 @@ const options = {
             }
         ]
     },
-    apis : ['./routes/*.js'] // where routes are defined
+    apis : [__dirname + './routes/*.js'] // where routes are defined
 }
 
 const swaggerSpec = swaggerJSDoc(options);
