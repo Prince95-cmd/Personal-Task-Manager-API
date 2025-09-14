@@ -5,6 +5,8 @@ const {connectToMongoDB} = require('./db');
 const taskRoute = require('./routes/task');
 const authRoute = require('./routes/auth');
 const env = require('dotenv');
+const { swaggerUi, swaggerSpec } = require('./swagger');
+
 
 require('./authentication/auth'); // Signup and login authentication middleware
 
@@ -21,6 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 connectToMongoDB();
 
 app.use(express.json());
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/', authRoute);
 app.use('/tasks', passport.authenticate('jwt', {session: false}), taskRoute);
