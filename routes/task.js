@@ -54,29 +54,30 @@ taskRoute.get('/', async (req, res) => {
 });
 
 
-/**  
+/**
  * @swagger
  * /tasks/{id}:
  *   get:
- *   summary: Get a task by ID
- * tags: [Tasks]    
- * security:
- *      - ApiKeyAuth: []
- * parameters:
- *   - in: path
- *    name: id
- *  required: true
- * schema:
- *   type: string
- * description: The task ID
- * responses:
- *  200:
- *    description: Task fetched successfully
- *  404:
- *   description: Task not found
- *  500:
- *  description: Server error
-*/
+ *     summary: Get a task by ID
+ *     tags: [Tasks]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The task ID
+ *     responses:
+ *       200:
+ *         description: Task fetched successfully
+ *       404:
+ *         description: Task not found
+ *       500:
+ *         description: Server error
+ */
+
 // Get a task by ID
 taskRoute.get('/:id', async (req, res) => {
     // Read task id from request params
@@ -132,6 +133,7 @@ taskRoute.get('/:id', async (req, res) => {
  *      400:
  *        description: Bad Request
  */
+
 // create a new task
 taskRoute.post('/', async (req, res) => {
     // Read task data from request body
@@ -160,38 +162,39 @@ taskRoute.post('/', async (req, res) => {
 })
 
 
-/** 
+/**
  * @swagger
  * /tasks/{id}:
  *   put:
- *   summary: Update a task
- *  tags: [Tasks]
- * security:
+ *     summary: Update a task
+ *     tags: [Tasks]
+ *     security:
  *       - ApiKeyAuth: []
- *  parameters:
- *    - in: path
- *     name: id
- *    required: true
- *    schema:
- *      type: string
- *    description: The task ID
- *  requestBody:
- *    required: true
- *   content:
- *     application/json:
- *      schema:
- *       type: object
- *      properties:
- *      title:
- *      type: string
- *     description:
- *    type: string
- * responses:
- *   200:
- *     description: Task updated successfully
- *  400:
- *    description: Bad Request
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The task ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Task updated successfully
+ *       400:
+ *         description: Bad Request
  */
+
 // Update a tasks
 taskRoute.put('/:id', async (req, res) => {
     const taskId = req.params.id;
@@ -217,27 +220,28 @@ taskRoute.put('/:id', async (req, res) => {
 })
 
 
-/** 
+/**
  * @swagger
  * /tasks/{id}:
- *  delete:
- *  summary: Delete a task
- * tags: [Tasks]
- * security:
+ *   delete:
+ *     summary: Delete a task
+ *     tags: [Tasks]
+ *     security:
  *       - ApiKeyAuth: []
- * parameters:
- *   - in: path
- *    name: id
- *   required: true
- *  schema:
- *    type: string
- *  description: The task ID
- * responses:
- *   200:
- *     description: Task deleted successfully
- *   400:
- *     description: Bad Request
-*/
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The task ID
+ *     responses:
+ *       200:
+ *         description: Task deleted successfully
+ *       400:
+ *         description: Bad Request
+ */
+
 // Delete a task
 taskRoute.delete('/:id', async (req, res) => {
     const taskId = req.params.id;
