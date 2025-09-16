@@ -7,6 +7,45 @@ env.config();
 
 const authRoute = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Authentication
+ *   description: User signup and login
+ */
+
+
+/**
+ * @swagger
+ * /signup:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: test@example.com
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 example: mySecret123
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ *       400:
+ *         description: Bad request
+ */
+
 //  Signup route - creates a new user
 authRoute.post(
     '/signup', 
@@ -19,6 +58,46 @@ authRoute.post(
     }
 );
 
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Login a user and get a token
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: test@example.com
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 example: mySecret123
+ *     responses:
+ *       200:
+ *         description: Login successful, returns a secret token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: JWT token to use in query params (`?secret_token=yourtoken`)
+ *       401:
+ *         description: Unauthorized (invalid credentials)
+ */
+
+// Login route - authenticates a user and returns a JWT token
 authRoute.post(
     '/login',
     async  (req, res, next) =>  {

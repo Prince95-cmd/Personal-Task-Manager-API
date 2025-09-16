@@ -24,7 +24,7 @@ const taskRoute = express.Router();
  *         description: Tasks fetched successfully
  *       401:
  *         description: Unauthorized
- *      500:
+ *       500:
  *        description: Server error
  */
 
@@ -130,14 +130,14 @@ taskRoute.get('/:id', async (req, res) => {
  *     responses:
  *       201:
  *         description: Task created successfully
- *      400:
+ *       400:
  *        description: Bad Request
  */
 
 // create a new task
 taskRoute.post('/', async (req, res) => {
     // Read task data from request body
-    const task = await req.body;
+    const task = req.body;
     console.log(task);
 
     try{
@@ -198,7 +198,7 @@ taskRoute.post('/', async (req, res) => {
 // Update a tasks
 taskRoute.put('/:id', async (req, res) => {
     const taskId = req.params.id;
-    const updatedData = await req.body;
+    const updatedData = req.body;
     console.log("Update task with ID: ", taskId);
 
     // Update a particular task by id in database
