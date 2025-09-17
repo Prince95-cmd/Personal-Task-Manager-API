@@ -52,7 +52,7 @@ const taskRoute = express.Router();
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/Components/Schemas/Task'
+ *                 $ref: '#/Components/Schemas/Tasks'
  *       401:
  *         description: Unauthorized
  *       500:
