@@ -12,9 +12,9 @@ const taskRoute = express.Router();
 
 /** 
  * @swagger
- *  Components:
- *    Schemas:
- *      Tasks:
+ *  components:
+ *    schema:
+ *      Task:
  *        type: object
  *        properties:
  *          _id:
@@ -52,7 +52,7 @@ const taskRoute = express.Router();
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/Components/Schemas/Tasks'
+ *                 $ref: '#/components/schema/Task'
  *       401:
  *         description: Unauthorized
  *       500:
