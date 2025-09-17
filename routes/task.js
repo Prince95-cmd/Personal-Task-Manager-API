@@ -10,6 +10,31 @@ const taskRoute = express.Router();
  *   description: Task management
  */
 
+/** 
+ * @swagger
+ *  Components:
+ *    Schemas:
+ *      Tasks:
+ *        type: object
+ *        properties:
+ *          _id:
+ *            type: string
+ *            description: The auto-generated id of the task
+ *          title:
+ *            type: string
+ *          description:
+ *            type: string
+ *          duration:
+ *            type: string
+ *          status:
+ *            type: string
+ *          date:
+ *            type: string
+ *          startTime:
+ *            type: string
+ *          endTime:
+ *            type: string
+ */
 
 /**
  * @swagger
@@ -21,7 +46,13 @@ const taskRoute = express.Router();
  *       - ApiKeyAuth: []
  *     responses:
  *       200:
- *         description: Tasks fetched successfully
+ *         description: Task fetched successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/Components/Schemas/Task'
  *       401:
  *         description: Unauthorized
  *       500:

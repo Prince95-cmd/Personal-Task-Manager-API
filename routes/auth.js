@@ -21,6 +21,11 @@ const authRoute = express.Router();
  *   post:
  *     summary: Register a new user
  *     tags: [Authentication]
+ *     parameters:
+ *       - in: body
+ *         name: user
+ *         description: The user to create.
+ *         required: true
  *     requestBody:
  *       required: true
  *       content:
