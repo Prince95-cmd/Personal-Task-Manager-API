@@ -99,10 +99,16 @@ taskRoute.get('/', async (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: The task ID
+ *         description: Auto generated id of the task
  *     responses:
  *       200:
  *         description: Task fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schema/Task'
  *       404:
  *         description: Task not found
  *       500:
