@@ -167,6 +167,12 @@ taskRoute.get('/:id', async (req, res) => {
  *     responses:
  *       201:
  *         description: Task created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schema/Task'
  *       400:
  *        description: Bad Request
  */
@@ -213,21 +219,33 @@ taskRoute.post('/', async (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: The task ID
+ *         description: ID of the task to be updated
  *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               title:
- *                 type: string
- *               description:
- *                 type: string
+ *       - in: body
+ *         name: task
+ *         description: The task to update.
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 title:
+ *                   type: string
+ *                 description:
+ *                   type: string
  *     responses:
  *       200:
  *         description: Task updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schema/Task'
  *       400:
  *         description: Bad Request
  */
@@ -271,10 +289,16 @@ taskRoute.put('/:id', async (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: The task ID
+ *         description: ID of the task to be deleted
  *     responses:
  *       200:
  *         description: Task deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schema/Task'
  *       400:
  *         description: Bad Request
  */
