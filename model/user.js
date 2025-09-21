@@ -16,15 +16,15 @@ const userModelSchema = new Schema({
 });
 
 // Hash the password before saving the user model
-userModelSchema.pre(
-    'save',
-    async function (next){
+async function hashPassword(next){
         const user = this;
         const hash = await bcrypt.hash(user.password, 10);
         this.password = hash;
         next();
     }
-)
+
+    // Pass hashed password to pre-save hook
+userModelSchema.pre('save', hashPassword)
 
 // Method to compare given password with the database hash
 userModelSchema.methods.isValidPassword = async function (password){
